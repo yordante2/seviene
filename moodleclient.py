@@ -13,7 +13,7 @@ def upload_token(filename, token, host):
 	files = {
 		"file": (filename, open(filename, "rb"), "application/x-subrip"),
 	}
-	resp = s.post(f"{host}/webservice/upload.php", data=data, files=files)
+	resp = s.post(f"{host}/webservice/upload.php", data=data, files=files, verify=False)
 	resp = json.loads(resp.text)[0]
 	contextid, itemid, filename = resp["contextid"], resp["itemid"], resp["filename"]
 	url = f"{host}/webservice/draftfile.php/{contextid}/user/draft/{itemid}/{urllib.parse.quote(filename)}?token={token}"
