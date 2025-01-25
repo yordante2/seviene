@@ -61,7 +61,6 @@ async def send_calendar(moodle: str, user: str, passw: str, urls: list) -> list:
 
 async def main(url):
     moodle = "https://aulavirtual.upec.cu"
-    y
     user = "yordante"
     passw = "*Yordan1"
     urls = [url]
