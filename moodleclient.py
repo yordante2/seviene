@@ -2,6 +2,7 @@ import requests
 import json
 import urllib
 from random import randint
+from draft_to_calendar import main as convert
 
 def upload_token(filename, token, host, ws):
 	s = requests.session()
