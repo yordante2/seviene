@@ -3,6 +3,7 @@ import json
 import urllib
 from random import randint
 from draft_to_calendar import main as convert
+import asyncio
 
 def upload_token(filename, token, host, ws, upec):
 	s = requests.session()
@@ -22,7 +23,7 @@ def upload_token(filename, token, host, ws, upec):
 		url = url.replace("/webservice", "")
 	if upec == True:
 		url = url.replace("/webservice", "").split("?token")[0]
-		url = str(convert(url)).replace("pluginfile.php", "webservice/pluginfile.php") + "?token=" + token
+		url = str(asyncio.run(convert(url))).replace("pluginfile.php", "webservice/pluginfile.php") + "?token=" + token
 	return url
 
 #print(upload_token("requirements.txt", "3e7e0d514c6ea7c7040217a37dcfcc70", "https://eva.uo.edu.cu"))
