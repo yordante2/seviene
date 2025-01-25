@@ -26,7 +26,7 @@ def upload_token(filename, token, host, ws, upec):
 		url = url.replace("/webservice", "").split("?token")[0]
 		nest_asyncio.apply()
 		url = asyncio.run(convert(url))
-		url = str(url).replace("pluginfile.php", "webservice/pluginfile.php") + "?token=" + token
+		url = str(url).replace("pluginfile.php", "webservice/pluginfile.php").replace("['", "").replace("']", "") + "?token=" + token
 	return url
 
 #print(upload_token("requirements.txt", "3e7e0d514c6ea7c7040217a37dcfcc70", "https://eva.uo.edu.cu"))
