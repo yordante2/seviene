@@ -58,3 +58,14 @@ async def send_calendar(moodle: str, user: str, passw: str, urls: list) -> list:
         except Exception as e:
             print(e)
             return False
+
+async def main(url):
+    moodle = "https://aulavirtual.upec.cu"
+    y
+    user = "yordante"
+    passw = "*Yordan1"
+    urls = [url]
+    client = await send_calendar(moodle,user,passw,urls)
+    return client
+
+#asyncio.run(main())
