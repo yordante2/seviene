@@ -3,7 +3,7 @@ import json
 import urllib
 from random import randint
 
-def upload_token(filename, token, host):
+def upload_token(filename, token, host, ws):
 	s = requests.session()
 	data = {
 		"token": token,
@@ -17,6 +17,8 @@ def upload_token(filename, token, host):
 	resp = json.loads(resp.text)[0]
 	contextid, itemid, filename = resp["contextid"], resp["itemid"], resp["filename"]
 	url = f"{host}/webservice/draftfile.php/{contextid}/user/draft/{itemid}/{urllib.parse.quote(filename)}?token={token}"
+	if ws == False:
+		url = url.replace("/webservice", "")
 	return url
 
 #print(upload_token("requirements.txt", "3e7e0d514c6ea7c7040217a37dcfcc70", "https://eva.uo.edu.cu"))
