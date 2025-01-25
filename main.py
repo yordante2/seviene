@@ -8,7 +8,7 @@ API_HASH = "6cad012cd66ba62e1b7d49f1f84742d1"
 BOT_TOKEN = "7279915670:AAHOPZhjXd-KBq9bUICQj-jdqI-edi0XXYQ"
 
 bot = Client("moodle", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
-data = {"moodle": "", "token": "", "ws": True}
+data = {"moodle": "", "token": "", "ws": True, "upec": False}
 
 @bot.on_message()
 async def messages_handler(client: Client, message: Message):
@@ -36,6 +36,12 @@ async def messages_handler(client: Client, message: Message):
 		elif msg.split(" ")[1] == "off":
 			data["ws"] = False
 		await message.reply("WebService: " + str(data["ws"]))
+	elif msg.startswith("/upec"):
+		if msg.split(" ")[1] == "on":
+			data["upec"] = True
+		elif msg.split(" ")[1] == "off":
+			data["upec"] = False
+		await message.reply("Upec: " + str(data["upec"]))
 	elif msg.startswith("http"):
 		try:
 			print(data)
