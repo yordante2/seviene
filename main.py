@@ -16,7 +16,7 @@ async def messages_handler(client: Client, message: Message):
 	username = message.from_user.username
 	#info = "Moodle: " + data["moodle"] + "\nToken: " + data["token"]
 	info = "😏 𝐈'𝐦 𝐚𝐥𝐢𝐯𝐞 👻"
-	if not username in ["yordante", "nakigeplayer", "nelson9608"]:
+	if not username in ["yordante", "nakigeplayer"]:
 		#await message.reply("Ke tu ase")
 		return
 	if msg.startswith("/start"):
