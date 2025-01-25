@@ -14,12 +14,13 @@ data = {"moodle": "", "token": ""}
 async def messages_handler(client: Client, message: Message):
 	msg = message.text
 	username = message.from_user.username
-	info = "Moodle: " + data["moodle"] + "\nToken: " + data["token"]
+	#info = "Moodle: " + data["moodle"] + "\nToken: " + data["token"]
+	info = "😏 𝐈'𝐦 𝐚𝐥𝐢𝐯𝐞 👻"
 	if not username in ["yordante", "nakigeplayer", "nelson9608"]:
 		#await message.reply("Ke tu ase")
 		return
 	if msg.startswith("/start"):
-		await message.reply("Moodle: " + data["moodle"] + "\nToken: " + data["token"])
+		await message.reply("😏 𝐈'𝐦 𝐚𝐥𝐢𝐯𝐞 👻")
 	elif msg.startswith("/config"):
 		try:
 			m = msg.split(" ")
@@ -32,7 +33,7 @@ async def messages_handler(client: Client, message: Message):
 	elif msg.startswith("http"):
 		try:
 			print(data)
-			await message.reply("Procesando...")
+			#await message.reply("Procesando...")
 			file = extras.download_file(msg)
 			link = moodleclient.upload_token(file, data["token"], data["moodle"])
 			await message.reply(link)
