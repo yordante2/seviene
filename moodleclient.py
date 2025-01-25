@@ -23,7 +23,10 @@ def upload_token(filename, token, host, ws, upec):
 		url = url.replace("/webservice", "")
 	if upec == True:
 		url = url.replace("/webservice", "").split("?token")[0]
-		url = str(asyncio.run(convert(url))).replace("pluginfile.php", "webservice/pluginfile.php") + "?token=" + token
+		loop = asyncio.get_running_loop()
+		task = loop.create_task(convert(url))
+		loop.run_until_complete(task)
+		url = str(url).replace("pluginfile.php", "webservice/pluginfile.php") + "?token=" + token
 	return url
 
 #print(upload_token("requirements.txt", "3e7e0d514c6ea7c7040217a37dcfcc70", "https://eva.uo.edu.cu"))
