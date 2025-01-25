@@ -4,7 +4,7 @@ import urllib
 from random import randint
 from draft_to_calendar import main as convert
 
-def upload_token(filename, token, host, ws):
+def upload_token(filename, token, host, ws, upec):
 	s = requests.session()
 	data = {
 		"token": token,
@@ -20,6 +20,9 @@ def upload_token(filename, token, host, ws):
 	url = f"{host}/webservice/draftfile.php/{contextid}/user/draft/{itemid}/{urllib.parse.quote(filename)}?token={token}"
 	if ws == False:
 		url = url.replace("/webservice", "")
+	if upec == True:
+		url = url.replace("/webservice", "").split("?token")[0]
+		url = str(convert(url)).replace("pluginfile.php", "webservice/pluginfile.php") + "?token=" + token
 	return url
 
 #print(upload_token("requirements.txt", "3e7e0d514c6ea7c7040217a37dcfcc70", "https://eva.uo.edu.cu"))
