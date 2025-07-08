@@ -2,6 +2,7 @@ from pyrogram import Client
 from pyrogram.types import Message
 import extras
 import moodleclient
+import os
 
 API_ID = 18233797
 API_HASH = "6cad012cd66ba62e1b7d49f1f84742d1"
@@ -49,6 +50,7 @@ async def messages_handler(client: Client, message: Message):
 			file = extras.download_file(msg)
 			link = moodleclient.upload_token(file, data["token"], data["moodle"], data["ws"], data["upec"])
 			await message.reply(link)
+			os.remove(file)
 		except Exception as ex:
 			await message.reply(ex)
 
